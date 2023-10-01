@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player/PlayerBox.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/box.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33, 32.5 )
@@ -14,7 +14,8 @@ mass = 10.0
 gravity_scale = 8.0
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
-position = Vector2( 0, 3 )
+position = Vector2( 1.19209e-07, 2.5 )
+scale = Vector2( 0.133065, 0.129225 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
