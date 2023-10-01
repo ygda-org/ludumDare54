@@ -18,12 +18,12 @@ func _process(delta):
 		if(vec_start.x >= boxPosition.x - boxSize.x/2 and vec_start.x <= boxPosition.x + boxSize.x/2) and (vec_start.y >= boxPosition.y - boxSize.y/2 and vec_start.y <= boxPosition.y + boxSize.y/2):
 			flag = true
 			vec_end = vec_start
-			points[0] = vec_start - playerbox.global_position
+			points[0] = vec_start - playerbox.global_position + Vector2(40, 40)
 	if Input.is_action_pressed(("click")) and flag == true:
 		vec_end = get_global_mouse_position()
-		points[1] = vec_end - playerbox.global_position
+		points[1] = vec_end - playerbox.global_position + Vector2(40, 40)
 	if Input.is_action_just_released("click") and flag == true:
-		playerbox.slingForce = (vec_start-vec_end)*2
+		playerbox.slingForce = (vec_start-vec_end)*2 
 		$Timer.start()
 		points[0] = Vector2.ZERO
 		points[1] = Vector2.ZERO
