@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/Line2D.gd" type="Script" id=1]
+[ext_resource path="res://Player/PlayerBox.tscn" type="PackedScene" id=2]
+
+[node name="SlingshotBox" type="Node2D"]
+
+[node name="PlayerBox" parent="." instance=ExtResource( 2 )]
+position = Vector2( 36, 47 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="Line2D"]
+wait_time = 0.5
+
+[connection signal="timeout" from="Line2D/Timer" to="Line2D" method="_on_Timer_timeout"]

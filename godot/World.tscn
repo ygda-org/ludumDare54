@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Player/PlayerBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/SlingshotBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -81,5 +81,5 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PlayerBox" parent="." instance=ExtResource( 1 )]
-position = Vector2( 196, -16 )
+[node name="SlingshotBox" parent="." instance=ExtResource( 1 )]
+position = Vector2( 14, 172 )
