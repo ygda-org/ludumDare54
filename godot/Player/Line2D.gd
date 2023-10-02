@@ -22,7 +22,7 @@ func _process(delta):
 		vec_start = boxPosition + Vector2(0, 10)
 		points[0] = vec_start - playerbox.global_position + Vector2(40, 40)
 		vec_end = get_global_mouse_position()
-		points[1] = vec_end - playerbox.global_position + Vector2(40, 40)
+		points[1] = vec_start - (vec_end - vec_start) - playerbox.global_position
 	if Input.is_action_just_released("click") and flag == true:
 		playerbox.slingForce = (vec_start-vec_end)*80
 		playerbox.slingshot()
