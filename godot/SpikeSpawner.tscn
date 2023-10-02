@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Spike.tscn" type="PackedScene" id=1]
+
+[node name="SpikeSpawner" type="ReferenceRect"]
+margin_right = 114.0
+margin_bottom = 60.0
+
+[node name="Spike" parent="." instance=ExtResource( 1 )]
+position = Vector2( 38, 26 )
