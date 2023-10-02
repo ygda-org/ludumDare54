@@ -7,7 +7,7 @@ var slingForce = Vector2(100,100)
 
 
 
-func _process(delta):
+func slingshot():
 	$RigidBody2D.apply_central_impulse(slingForce)
 
 func damage():
