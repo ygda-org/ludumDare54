@@ -1,12 +1,24 @@
 extends KinematicBody2D
 
 export var speed = 400
-export var direction = "x"
+
 var velocity = Vector2.ZERO
 
 func _ready():
-	if direction == "x":
+	randomize()
+	var spawnSize = get_parent().rect_size
+	var spawnX = randf() * spawnSize.x
+	var spawnY = randf() * spawnSize.y
+
+	set_position(Vector2(spawnX, spawnY))
+
+	var r = randi()%2
+	print(r)
+	if r == 0:
 		velocity = Vector2(speed,0)
+	else:
+		velocity = Vector2(0,speed)
+
 
 
 

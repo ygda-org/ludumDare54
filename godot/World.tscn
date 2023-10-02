@@ -1,20 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/SlingshotBox.tscn" type="PackedScene" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/wall.png" type="Texture" id=2]
 [ext_resource path="res://SpikeSpawner.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/background.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/SpaceGrotesk-Medium.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://World.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/SpaceGrotesk-Regular.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 244.625, 32 )
-
-[sub_resource type="StreamTexture" id=4]
-flags = 4
-load_path = "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
-
-[sub_resource type="StreamTexture" id=2]
-flags = 4
-load_path = "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 35.5, 283.5 )
@@ -22,19 +17,38 @@ extents = Vector2( 35.5, 283.5 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 35.5, 283.5 )
 
+[sub_resource type="StreamTexture" id=6]
+flags = 4
+load_path = "res://.import/tape.png-0fa6218265c0957f59d48fedd073b3f7.stex"
+
+[sub_resource type="DynamicFont" id=7]
+size = 40
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 40
+font_data = ExtResource( 7 )
+
 [node name="World" type="Node2D"]
-position = Vector2( 122, 255 )
+position = Vector2( 338, 251 )
+script = ExtResource( 6 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 104.5, 23.75 )
+scale = Vector2( 2.48214, 2.26528 )
+texture = ExtResource( 4 )
 
 [node name="TestGround" type="Node2D" parent="."]
 
 [node name="TestGround" type="Node2D" parent="TestGround"]
 
 [node name="Sprite" type="Sprite" parent="TestGround/TestGround"]
-position = Vector2( 210.5, 294 )
-scale = Vector2( 7.60938, 1 )
+position = Vector2( 217.168, 292 )
+rotation = 1.5708
+scale = Vector2( 1.59997, 1.58759 )
 texture = ExtResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TestGround/TestGround"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TestGround/TestGround" groups=["wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround/TestGround/StaticBody2D"]
 position = Vector2( 211.375, 292 )
@@ -43,24 +57,20 @@ shape = SubResource( 1 )
 [node name="TestGround2" type="Node2D" parent="TestGround"]
 position = Vector2( 113, -210 )
 
-[node name="Sprite" type="Sprite" parent="TestGround/TestGround2"]
-position = Vector2( 100, 0 )
-scale = Vector2( 7.9375, 1 )
-texture = SubResource( 4 )
-
 [node name="StaticBody2D" type="StaticBody2D" parent="TestGround/TestGround2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround/TestGround2/StaticBody2D"]
 position = Vector2( 102, 0 )
 shape = SubResource( 1 )
 
+[node name="Sprite2" type="Sprite" parent="TestGround/TestGround2"]
+position = Vector2( 98, 0 )
+rotation = 1.5708
+scale = Vector2( 1.59997, 1.58759 )
+texture = ExtResource( 2 )
+
 [node name="TestGround3" type="Node2D" parent="TestGround"]
 position = Vector2( -173, -119 )
-
-[node name="Sprite" type="Sprite" parent="TestGround/TestGround3"]
-position = Vector2( 106.5, 163 )
-scale = Vector2( 1.07813, 8.8125 )
-texture = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TestGround/TestGround3"]
 
@@ -68,13 +78,13 @@ texture = SubResource( 2 )
 position = Vector2( 106, 158 )
 shape = SubResource( 5 )
 
+[node name="Sprite" type="Sprite" parent="TestGround/TestGround3"]
+position = Vector2( 106, 158.5 )
+scale = Vector2( 1.59997, 1.45663 )
+texture = ExtResource( 2 )
+
 [node name="TestGround4" type="Node2D" parent="TestGround"]
 position = Vector2( 387, -118 )
-
-[node name="Sprite" type="Sprite" parent="TestGround/TestGround4"]
-position = Vector2( 106.5, 166 )
-scale = Vector2( 1.07813, 8.90625 )
-texture = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TestGround/TestGround4"]
 
@@ -85,13 +95,49 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="Sprite" type="Sprite" parent="TestGround/TestGround4"]
+position = Vector2( 106, 158.5 )
+scale = Vector2( 1.59997, 1.45663 )
+texture = ExtResource( 2 )
+
 [node name="SlingshotBox" parent="." instance=ExtResource( 1 )]
 position = Vector2( 33, 173 )
-
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
 
 [node name="SpikeSpawner" parent="." instance=ExtResource( 3 )]
 margin_left = -29.0
 margin_top = -173.0
 margin_right = 460.0
 margin_bottom = 261.0
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Back" type="TextureButton" parent="Control"]
+margin_left = -311.0
+margin_top = 254.0
+margin_right = 27.0
+margin_bottom = 379.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 1
+texture_normal = SubResource( 6 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Back"]
+margin_left = 123.0
+margin_top = 28.0
+margin_right = 237.0
+margin_bottom = 81.0
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 7 )
+text = "Back"
+
+[node name="LevelIndicator" type="RichTextLabel" parent="Control"]
+margin_left = -317.0
+margin_top = -220.0
+margin_right = -125.0
+margin_bottom = -149.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Level: 1"
+
+[connection signal="pressed" from="Control/Back" to="." method="_on_Back_pressed"]

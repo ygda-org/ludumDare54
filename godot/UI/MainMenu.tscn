@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/fonts/SpaceGrotesk-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/tape.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/SpaceGrotesk-Medium.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/boxdamaged1.png" type="Texture" id=5]
+[ext_resource path="res://assets/background.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 75
+outline_color = Color( 0.956863, 0.658824, 0.14902, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/tape.png-0fa6218265c0957f59d48fedd073b3f7.stex"
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 523.5, 327.75 )
+scale = Vector2( 1.59478, 1.64914 )
+texture = ExtResource( 6 )
+
+[node name="Title" type="RichTextLabel" parent="."]
+margin_left = 418.0
+margin_top = 37.0
+margin_right = 684.0
+margin_bottom = 145.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Boxin'"
+
+[node name="Start" type="TextureButton" parent="."]
+margin_left = 134.0
+margin_top = 166.0
+margin_right = 472.0
+margin_bottom = 291.0
+texture_normal = ExtResource( 3 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Start"]
+margin_left = 123.0
+margin_top = 28.0
+margin_right = 237.0
+margin_bottom = 81.0
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "Start"
+
+[node name="Credits" type="TextureButton" parent="."]
+margin_left = 134.0
+margin_top = 353.0
+margin_right = 472.0
+margin_bottom = 478.0
+texture_normal = SubResource( 3 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+margin_left = 102.0
+margin_top = 28.0
+margin_right = 254.0
+margin_bottom = 81.0
+mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "Credits"
+
+[node name="Boxdamaged1" type="Sprite" parent="."]
+position = Vector2( 802, 335 )
+rotation = 0.279253
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 5 )
+
+[connection signal="pressed" from="Start" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
