@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/SlingshotBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Spike.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 244.625, 32 )
@@ -26,56 +27,58 @@ position = Vector2( 122, 255 )
 
 [node name="TestGround" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="TestGround"]
+[node name="TestGround" type="Node2D" parent="TestGround"]
+
+[node name="Sprite" type="Sprite" parent="TestGround/TestGround"]
 position = Vector2( 210.5, 294 )
 scale = Vector2( 7.60938, 1 )
 texture = ExtResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TestGround"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TestGround/TestGround"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround/TestGround/StaticBody2D"]
 position = Vector2( 211.375, 292 )
 shape = SubResource( 1 )
 
-[node name="TestGround2" type="Node2D" parent="."]
+[node name="TestGround2" type="Node2D" parent="TestGround"]
 position = Vector2( 113, -210 )
 
-[node name="Sprite" type="Sprite" parent="TestGround2"]
+[node name="Sprite" type="Sprite" parent="TestGround/TestGround2"]
 position = Vector2( 100, 0 )
 scale = Vector2( 7.9375, 1 )
 texture = SubResource( 4 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TestGround2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TestGround/TestGround2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround2/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround/TestGround2/StaticBody2D"]
 position = Vector2( 102, 0 )
 shape = SubResource( 1 )
 
-[node name="TestGround3" type="Node2D" parent="."]
+[node name="TestGround3" type="Node2D" parent="TestGround"]
 position = Vector2( -173, -119 )
 
-[node name="Sprite" type="Sprite" parent="TestGround3"]
+[node name="Sprite" type="Sprite" parent="TestGround/TestGround3"]
 position = Vector2( 106.5, 163 )
 scale = Vector2( 1.07813, 8.8125 )
 texture = SubResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TestGround3"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TestGround/TestGround3"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround3/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround/TestGround3/StaticBody2D"]
 position = Vector2( 106, 158 )
 shape = SubResource( 5 )
 
-[node name="TestGround4" type="Node2D" parent="."]
+[node name="TestGround4" type="Node2D" parent="TestGround"]
 position = Vector2( 387, -118 )
 
-[node name="Sprite" type="Sprite" parent="TestGround4"]
+[node name="Sprite" type="Sprite" parent="TestGround/TestGround4"]
 position = Vector2( 106.5, 166 )
 scale = Vector2( 1.07813, 8.90625 )
 texture = SubResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TestGround4"]
+[node name="StaticBody2D" type="StaticBody2D" parent="TestGround/TestGround4"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround4/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestGround/TestGround4/StaticBody2D"]
 position = Vector2( 106, 165.5 )
 shape = SubResource( 3 )
 __meta__ = {
@@ -88,3 +91,5 @@ position = Vector2( 33, 173 )
 [node name="Spike" parent="." instance=ExtResource( 3 )]
 position = Vector2( 435, 105 )
 rotation = -1.65213
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]

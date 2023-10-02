@@ -5,9 +5,7 @@ var vec_start := Vector2.ZERO
 var vec_end := Vector2.ZERO
 var flag = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+
 
 func _process(delta):
 	#print(playerbox.get_node("RigidBody2D").position.x)
@@ -23,7 +21,7 @@ func _process(delta):
 		vec_end = get_global_mouse_position()
 		points[1] = vec_end - playerbox.global_position + Vector2(40, 40)
 	if Input.is_action_just_released("click") and flag == true:
-		playerbox.slingForce = (vec_start-vec_end)*2 
+		playerbox.slingForce = (vec_start-vec_end)*5
 		$Timer.start()
 		points[0] = Vector2.ZERO
 		points[1] = Vector2.ZERO
