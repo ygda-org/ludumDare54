@@ -6,8 +6,8 @@ func _ready():
 	direction = int(randf() * 3) 
 	self.rotation_degrees = 90 * direction
 	var spawnSize = get_parent().rect_size
-	var spawnX = randf() * spawnSize.x
-	var spawnY = randf() * spawnSize.y
+	var spawnX = randf() * (spawnSize.x - $ReferenceRect.rect_size.x)  + $ReferenceRect.rect_size.x/2
+	var spawnY = randf() * (spawnSize.y - $ReferenceRect.rect_size.x)  + $ReferenceRect.rect_size.x/2
 	if direction == 0:
 		spawnY = spawnSize.y
 	if direction == 1:
@@ -26,8 +26,8 @@ func _on_Area2D_body_entered(body):
 			direction = int(randf() * 3) 
 		self.rotation_degrees = 90 * direction
 		var spawnSize = get_parent().rect_size
-		var spawnX = randf() * spawnSize.x
-		var spawnY = randf() * spawnSize.y
+		var spawnX = randf() * (spawnSize.x - $ReferenceRect.rect_size.x)  + $ReferenceRect.rect_size.x/2
+		var spawnY = randf() * (spawnSize.y - $ReferenceRect.rect_size.x)  + $ReferenceRect.rect_size.x/2
 		if direction == 0:
 			spawnY = spawnSize.y
 		if direction == 1:
